@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="moha.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+    <title>XO Game</title>
+    <style>
+        #game-container {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            gap: 5px;
+        }
+        .cell {
+            text-align: center;
+            width: 100px;
+            height: 100px;
+            font-size: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: lightgray;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body >
+    <header>
+        <div class="menu-container">
+    <button class="menu-button"><img src="Home.png" width="30px" alt="home" /></button>
+    <ul class="menu-list">
+        <li><a href="Netflix.html">الرئيسية</a></li>
+        <li><a href="https://www.facebook.com/mouhemed.ghalima">خدمات</a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=100073208447592">الدعم</a></li>
+        <li><a href="https://www.facebook.com/mouhemed.ghalima">المبرمج</a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=100088448415030">البائع</a></li>
+        <li><a href="index.html">حول</a></li>
+    </ul>
+</div>
+        <div class="menu-button1">
+        <p class="menu-toggle">
+            <img src="Logo.png" width="100px" alt="قامة">
+        </p>
+        </div>
+        <h1>NETFLIX SHOP</h1>
+    </header>
+    <h1>Tic-Tac-Toe (XO Game)</h1>
+    <div id="message"><div id="xo">Player X's turn</div></div>
+    <div id="game-container"></div>
+    <script>
+    // تعريف المتغيرات
+let currentPlayer = 'gh';
+let gameBoard = ['', '', '', '', '', '', '', '', ''];
+let gameOver = false;
+
+// تحديث اللوحة بعد النقر على مربع
+function handleCellClick(cellIndex) {
+  if (!gameOver && gameBoard[cellIndex] === '') {
+    gameBoard[cellIndex] = currentPlayer;
+    document.getElementById(`cell${cellIndex}`).innerText = currentPlayer;
+    if (checkWin()) {
+      document.getElementById('message').innerText = `Player ${currentPlayer} wins!`;
+      gameOver = true;
+    } else if (gameBoard.indexOf('') === -1) {
+      document.getElementById('message').innerText = 'It\'s a draw!';
+      gameOver = true;
+    } else {
+      currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+      document.getElementById('message').innerText = `Player ${currentPlayer}'s turn`;
+    }
+  }
+}
+
+// تحقق من الفوز
+function checkWin() {
+  const winCombos = [
+    [0, 1, 2], [3, 4, 5], [6, 7, 8], // الأعمدة
+    [0, 3, 6], [1, 4, 7], [2, 5, 8], // الصفوف
+    [0, 4, 8], [2, 4, 6] // القطرين
+  ];
+  for (const combo of winCombos) {
+    const [a, b, c] = combo;
+    if (gameBoard[a] && gameBoard[a] === gameBoard[b] && gameBoard[a] === gameBoard[c]) {
+      return true;
+    }
+  }
+  return false;
+}
+
+// إعداد اللوحة
+function setupGameBoard() {
+  const gameContainer = document.getElementById('game-container');
+  for (let i = 0; i < 9; i++) {
+    const cell = document.createElement('div');
+    cell.classList.add('cell');
+    cell.id = `cell${i}`;
+    cell.addEventListener('click', () => handleCellClick(i));
+    gameContainer.appendChild(cell);
+  }
+}
+
+// بدء اللعبة
+setupGameBoard();
+document.getElementById('message').innerText = `Player ${currentPlayer}'s turn`;
+function handleCellClick(cellIndex) {
+  if (!gameOver && gameBoard[cellIndex] === '') {
+    gameBoard[cellIndex] = currentPlayer;
+    document.getElementById(`cell${cellIndex}`).innerText = currentPlayer;
+    if (checkWin()) {
+      document.getElementById('message').innerText = `Player ${currentPlayer} winer!`;
+      gameOver = true;
+    } else if (gameBoard.indexOf('') === -1) {
+      document.getElementById('message').innerText = 'It\'s a draw!';
+      gameOver = true;
+    } else {
+      currentPlayer = currentPlayer === 'gh' ? 'u' : 'gh';
+      document.getElementById('message').innerText = `Player ${currentPlayer}'s turn`;
+    }
+  }
+
+  // إذا انتهت المباراة (بالنصر أو التعادل)، قم بإعادة تعيين المتغيرات ومحتوى اللوحة
+  if (gameOver) {
+    setTimeout(() => {
+      gameBoard = ['', '', '', '', '', '', '', '', ''];
+      currentPlayer = 'gh';
+      gameOver = false;
+      document.getElementById('message').innerText = `Player ${currentPlayer}'s turn`;
+      const cells = document.querySelectorAll('.cell');
+      cells.forEach(cell => cell.innerText = '');
+    }, 3000); // بعد انتهاء المباراة، انتظر 1.5 ثانية قبل إعادة اللعبة
+  }
+}
+        // الكود البرمجي هنا
+        // يمكنك نسخ الكود البرمجي السابق ولصقه هنا.   
+        
+        
+        </script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #C7AA00;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.menu-button1 {
+    order: 2;
+}
+
+.menu-toggle {
+    
+    color: #fff;
+    border: none;
+    
+    padding: 5px 10px;
+    
+
+}
+
+
+h1 {
+    margin: 0; /* إزالة الهوامش الافتراضية للعنوان */
+color: red;
+    
+}
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; /* يمكن تعديل هذا الارتفاع حسب احتياجاتك */
+
+    background-color: black;
+}
+
+.product {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.product img {
+    max-width: 100%;
+    height: auto;
+}
+
+.price {
+    font-size: 24px;
+    color: red;
+    margin: 10px 0;
+} 
+.textNON {
+    text-decoration: none;
+    color: white;
+font-size: 14px;
+    
+}
+.moj {
+    font-size: 30px;
+}
+
+
+
+
+
+
+
+
+.buy-button {
+    text-decoration: none;
+    background-color: #e74c3c;
+    color: #fff;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+ margin-top: 10px;   
+}
+
+.buy-button:hover {
+    background-color: #c0392b;
+}
+.image-container {
+    position: relative;
+    width: 500px; /* تغيير العرض حسب الحاجة */
+    height: 400px; /* تغيير الارتفاع حسب الحاجة */
+    overflow: hidden;
+    margin-top: 20px; /* تباعد بين الصورة والنص */
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.image-container img.active {
+    opacity: 1;
+}
+.price, .description {
+    font-size: 24px;
+    color: green;
+    margin: 10px 0;
+    transition: color 0.3s ease-in-out;
+}
+
+.price.change, .description.change {
+    animation: changeContent 0.5s ease-in-out;
+}
+
+@keyframes changeContent {
+    0% {
+        transform: scale(1);
+        color: #27ae60;
+    }
+    50% {
+        transform: scale(1.2);
+        color: #e74c3c;
+    }
+    100% {
+        transform: scale(1);
+        color: #27ae60;
+    }
+}
+.site-link {
+    display: block;
+    width: 150px; /* تغيير العرض حسب الحاجة */
+    height: 40px; /* تغيير الارتفاع حسب الحاجة */
+    background-color: #3498db;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: background-color 0.3s ease-in-out;
+}
+
+.site-link:hover {
+    background-color: #2980b9;
+}
+.menu-container {
+    position: relative;
+    display: inline-block;
+}
+
+.menu-button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.menu-list {
+    display: none;
+    position: absolute;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    text-align: right; /* يضمن توجيه النص إلى اليمين */
+     z-index: 2; /* يجعل القائمة فوق الصورة */
+     background-color: #990100;
+}
+
+.menu-list li {
+    padding: 30px;
+    font-size: 40px;
+
+}
+
+.menu-list a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    width: 400px;
+}
+
+.menu-button:hover + .menu-list,
+.menu-list:hover {
+    display: block;
+    background-color: white;
+}
+
+.menu-button:hover {
+    
+    background-color: #2980b9;
+}
+#xo {
+    margin: 0 auto;
+    text-align: center;
+}
+#game-container {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    gap: 5px;
+    margin: 0 auto; /* هذا يوسط اللوحة أفقياً */
+}
